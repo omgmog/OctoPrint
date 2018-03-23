@@ -1921,7 +1921,8 @@ class MachineCom(object):
 				                     self.STATE_PAUSED,
 				                     self.STATE_TRANSFERING_FILE):
 					if line == "start": # exact match, to be on the safe side
-						if self._state in (self.STATE_OPERATIONAL,):
+						idle = self._state in (self.STATE_OPERATIONAL,)
+						if idle:
 							message = "Printer sent 'start' while already operational. External reset? " \
 							          "Resetting line numbers to be on the safe side"
 							self._log(message)
@@ -1934,10 +1935,12 @@ class MachineCom(object):
 							          "Aborting job since printer lost state.".format(verb)
 							self._log(message)
 							self._logger.warn(message)
-							self.cancelPrint(disable_log_position=True)
-							self._onExternalReset()
+							with self.job_put_on_hold():
+								self.sayHello(tags={"trigger:comm.on_external_reset"})
+								self.cancelPrint(disable_log_position=True)
+								self._onExternalReset()
 
-						eventManager().fire(Events.PRINTER_RESET)
+						eventManager().fire(Events.PRINTER_RESET, payload=dict(idle=idle))
 
 			except:
 				self._logger.exception("Something crashed inside the serial connection loop, please report this in OctoPrint's bug tracker:")

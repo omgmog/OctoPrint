@@ -279,9 +279,19 @@ function DataUpdater(allViewModels, connectCallback, disconnectCallback) {
                     });
                 }
             } else if (type === "PrinterReset") {
+                var severity = undefined,
+                    text = undefined;
+                if (payload.idle) {
+                    text = gettext("It looks like your printer reset while a connection was active. If this was intentional you may safely ignore this message. Otherwise you should investigate why your printer reset itself, since this will interrupt prints and also file transfers to your printer's SD.");
+                    severity = "alert";
+                } else {
+                    text = gettext("It looks like your printer reset while a connection was active. Due to this the ongoing job was aborted. If this was intentional you may safely ignore this message. Otherwise you should investigate why your printer reset itself, since this will interrupt prints and also file transfers to your printer's SD.");
+                    severity = "error";
+                }
                 new PNotify({
                     title: gettext("Printer reset detected"),
-                    text: gettext("It looks like your printer reset while a connection was active. If this was intentional you may safely ignore this message. Otherwise you should investigate why your printer reset itself, since this will interrupt prints and also file transfers to your printer's SD."),
+                    text: text,
+                    type: severity,
                     hide: false
                 });
             }
