@@ -1,0 +1,55 @@
+{
+  "short_name": "Octoprint",
+  "name": "Octoprint",
+  "icons": [
+    {
+      "src": "/static/img/apple-touch-icon-114x114.png",
+      "type": "image/png",
+      "sizes": "114x114"
+    },
+    {
+      "src": "/static/img/apple-touch-icon-144x144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/static/img/tentacle-20x20.png",
+      "type": "image/png",
+      "sizes": "20x20"
+    },
+    {
+      "src": "/static/img/tentacle-22x22.png",
+      "type": "image/png",
+      "sizes": "22x22"
+    },
+    {
+      "src": "/static/img/tentacle-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/static/img/tentacle-56x56.png",
+      "type": "image/png",
+      "sizes": "56x56"
+    },
+    {
+      "src": "/static/img/tentacle-76x76.png",
+      "type": "image/png",
+      "sizes": "76x76"
+    },
+    {
+      "src": "/static/img/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/static/img/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#fff",
+  "theme_color": "#56BE37",
+  "display": "standalone"
+}

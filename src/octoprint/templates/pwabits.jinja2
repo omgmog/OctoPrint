@@ -1,0 +1,11 @@
+<meta name="theme-color" content="#56BE37">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+<script src="{{ url_for('static', filename='vendor/upup-1.0.0/upup.min.js') }}"></script>
+<script>
+    UpUp.start({
+      'content-url': '{{ url_for('static', filename='offline.html') }}',
+      'service-worker-url': '/sw.js'
+    });
+</script>

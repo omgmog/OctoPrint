@@ -876,6 +876,9 @@ def localeJs(locale, domain):
 def plugin_assets(name, filename):
 	return redirect(url_for("plugin." + name + ".static", filename=filename))
 
+@app.route('/sw.js')
+def swjs():
+	return app.send_static_file('vendor/upup-1.0.0/upup.sw.min.js')
 
 def _compute_etag_for_i18n(locale, domain, files=None, lastmodified=None):
 	if files is None:
