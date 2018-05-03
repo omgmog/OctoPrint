@@ -1425,3 +1425,38 @@ input[type="number"].input-nospin {
     margin-top: 20px;
   }
 }
+
+
+// Make site a bit more responsive
+.page-container,
+.container,
+.navbar-static-top .container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+  max-width: 100%;
+}
+
+
+@media screen and (max-width: 960px) {
+  .octoprint-container > .row {
+    display: flex;
+    flex-direction: column;
+    max-width: 98%;
+    margin: auto;
+  }
+  .octoprint-container > .row  > .span4,
+  .octoprint-container > .row  > .span8 {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    float: none;
+  }
+  .octoprint-container > .row  > .span8 {
+    order: -1; // Move to top
+    margin-bottom: 20px;
+  }
+  .footer {
+    max-width: 98%;
+    margin: auto;
+  }
+}
